@@ -1,0 +1,17 @@
+services:
+  kin-node:
+    build: .
+    container_name: kinetic-node
+    restart: unless-stopped
+    ports:
+      - "${KNET_PORT:-8080}:8080"
+      - "${KEST_PORT:-8443}:8443"
+      - "${ADMIN_PORT:-4040}:4040"
+    environment:
+      - NODE_NAME=${NODE_NAME:-kin-node}
+      - NODE_DESC=${NODE_DESC:-A Kinetic Industries node}
+      - ADMIN_USER=${ADMIN_USER:-admin}
+      - ADMIN_PASS=${ADMIN_PASS:-change-me}
+    volumes:
+      - ./data:/app/data
+      - ./sites:/app/sites
