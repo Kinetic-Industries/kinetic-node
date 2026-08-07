@@ -29,7 +29,6 @@ function generateCertificate(nodeName) {
   const attrs = [
     { name: 'commonName', value: nodeName },
     { name: 'organizationName', value: 'Kinetic Industries' },
-    { name: 'organizationUnitName', value: 'Kin Node' },
   ];
   cert.setSubject(attrs);
   cert.setIssuer(attrs);
