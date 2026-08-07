@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kinetic Node — Admin</title>
+  <link rel="stylesheet" href="/impeccable.css" />
+</head>
+<body>
+  <!-- Login view -->
+  <section id="login-view" class="login-card">
+    <div class="label">Kinetic Node</div>
+    <h1>Administrator</h1>
+    <div id="login-error" class="error-box hidden"></div>
+    <form id="login-form">
+      <label for="login-user">Username</label>
+      <input type="text" id="login-user" autocomplete="username" autofocus />
+      <label for="login-pass">Password</label>
+      <input type="password" id="login-pass" autocomplete="current-password" />
+      <div style="margin-top:1.2rem">
+        <button type="submit" class="primary" style="width:100%">Log in</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Dashboard view -->
+  <div id="dashboard-view" class="hidden">
+    <div class="wrap">
+      <header style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--hairline);padding-bottom:1rem">
+        <div>
+          <div class="label">Kinetic Node · Admin</div>
+          <h1 style="margin:0" id="node-name">—</h1>
+          <p class="mono dim" id="node-id" style="margin:.3rem 0 0">—</p>
+        </div>
+        <button id="logout-btn">Log out</button>
+      </header>
+
+      <div id="flash"></div>
+
+      <h2>Registered Domains</h2>
+      <div class="panel">
+        <div id="domains-empty" class="dim" style="font-size:.9rem">No domains registered yet.</div>
+        <table id="domains-table" class="hidden">
+          <thead>
+            <tr><th>Domain</th><th>Directory</th><th>Registered</th><th>Description</th><th></th></tr>
+          </thead>
+          <tbody id="domains-body"></tbody>
+        </table>
+      </div>
+
+      <h3>Register a domain</h3>
+      <div class="panel">
+        <form id="domain-form">
+          <label for="domain-name">Domain name</label>
+          <input type="text" id="domain-name" placeholder="hello.k" />
+          <label for="domain-desc">Description <span class="dim">(optional)</span></label>
+          <input type="text" id="domain-desc" placeholder="My site on Kin" />
+          <div style="margin-top:1rem">
+            <button type="submit" class="primary">Register domain</button>
+          </div>
+        </form>
+      </div>
+
+      <h2>Node Identity</h2>
+      <div class="panel">
+        <div class="label">Node ID</div>
+        <div class="mono" id="cert-nodeid">—</div>
+        <div class="label" style="margin-top:1rem">Certificate fingerprint (SHA-256)</div>
+        <div class="mono dim" id="cert-fingerprint">—</div>
+        <div class="label" style="margin-top:1rem">Certificate</div>
+        <pre class="mono" id="cert-pem" style="white-space:pre-wrap;font-size:.72rem;line-height:1.4;max-height:12rem;overflow:auto;border:1px solid var(--hairline);border-radius:2px;padding:.8rem;background:var(--paper)">—</pre>
+      </div>
+
+      <h2>Node Settings</h2>
+      <div class="panel">
+        <form id="settings-form">
+          <label for="settings-name">Node name</label>
+          <input type="text" id="settings-name" />
+          <label for="settings-desc">Description</label>
+          <input type="text" id="settings-desc" />
+          <div style="margin-top:1rem">
+            <button type="submit" class="primary">Save settings</button>
+          </div>
+        </form>
+      </div>
+
+      <h2>Administrator Credentials</h2>
+      <div class="panel">
+        <form id="credentials-form">
+          <label for="cred-current">Current password</label>
+          <input type="password" id="cred-current" autocomplete="current-password" />
+          <label for="cred-user">New username</label>
+          <input type="text" id="cred-user" autocomplete="username" />
+          <label for="cred-pass">New password <span class="dim">(min 8 chars)</span></label>
+          <input type="password" id="cred-pass" autocomplete="new-password" />
+          <div style="margin-top:1rem">
+            <button type="submit" class="primary">Change credentials</button>
+          </div>
+        </form>
+      </div>
+
+      <hr />
+      <p class="dim" style="font-size:.8rem">
+        This dashboard is bound to the node's local network. Keep the
+        administrator credentials safe — they control domain registration
+        and node configuration.
+      </p>
+    </div>
+  </div>
+
+  <script src="/admin.js"></script>
+</body>
+</html>
